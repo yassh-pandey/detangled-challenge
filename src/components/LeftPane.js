@@ -6,6 +6,8 @@ import TripCard from './TripCard'
 import moment from 'moment';
 const itemsPerLazyLoad = 10;
 const reducer = (state, action)=>{
+    let newData = [];
+    let newAllData = [];
     switch (action.type){
         case "INIT_STATE":
             return {...state, allData: [...state.allData, ...action.payload.allData], isLoaded: action.payload.isLoaded, 
@@ -13,7 +15,7 @@ const reducer = (state, action)=>{
         case "APPEND_TO_TRIPS":
             return {...state, data: [...state.data, ...action.payload.data], startIndex: action.payload.startIndex};
         case "SET_EDITABLE_CONTENT":
-            const newData = state.data.map(item=>{
+            newData = state.data.map(item=>{
                     if(item.id.toString()===action.payload.cardId.toString()){
                         return {...item, destination: action.payload.content.trip_destination, comment: action.payload.content.trip_comment};
                     }
@@ -22,6 +24,10 @@ const reducer = (state, action)=>{
                     }
                 });
             return {...state, data: newData};
+        case "DELETE_TRIP":
+            newData = state.data.filter(item=>item.id.toString()!==action.payload.id.toString())
+            newAllData = state.allData.filter(item=>item.id.toString()!==action.payload.id.toString());
+            return {...state, data: [...newData], allData: [...newAllData]};
         default:
             return state;
     }
@@ -42,7 +48,7 @@ function LeftPane(props) {
             (entries=>{
                 const loadMoreElement = entries[0];
                 if (loadMoreElement.isIntersecting){
-                    if(state.startIndex>99){
+                    if(state.startIndex>state.allData.length){
                         return;
                     }
                     setLoadMore(true);
@@ -114,17 +120,17 @@ function LeftPane(props) {
             if(state.isLoaded){
                 const itemInViewPort = state.data.find(item=>item.id.toString()===idOfItemInViewPort.toString());
                 const momentDateArray = [];
-                const startDate = moment(itemInViewPort.start).toDate();
-                const tripDuration = parseInt(itemInViewPort.duration);
+                const startDate = moment(itemInViewPort?.start).toDate();
+                const tripDuration = parseInt(itemInViewPort?.duration);
                 for(let i = 0; i < tripDuration; i++){
                     const date = moment(startDate).add(i, "d");
                     momentDateArray.push(date.toDate());
                 }
                 setActiveDates(momentDateArray);
-                setCurrentColor(itemInViewPort.color);
+                setCurrentColor(itemInViewPort?.color);
             }
         }
-    }, [idOfItemInViewPort, state, setActiveDates, setCurrentColor])
+    }, [idOfItemInViewPort, state.isLoaded, setActiveDates, setCurrentColor])
     return (
         state.isLoaded
         ?

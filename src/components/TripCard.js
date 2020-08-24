@@ -42,6 +42,13 @@ function TripCard(props) {
     };
     const proceedDeleteOperation = (e)=>{
         e.preventDefault();
+        props.io.unobserve(tripCardWrapperRef.current);
+        props.globalTripDispatch({
+            type: "DELETE_TRIP",
+            payload: {
+                id: cardId
+            }
+        });
         const options = {
             method: "DELETE",
             mode: 'cors',
