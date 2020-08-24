@@ -29,7 +29,7 @@ The right side of the view shows a scrollable calendar. The dates on the calenda
 <br />
 <br />
 
-# The webapp is not responsive so for desired behaviour / experience please run it on a desktop / laptop browser.
+# The webapp is not responsive, so to see the desired behaviour please run it on a desktop or laptop browser.
 
 # A sample of how the UI looks:
 ![UI gif](https://github.com/yassh-pandey/detangled-challenge/blob/master/WebAppGif.gif)
