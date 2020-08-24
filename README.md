@@ -19,10 +19,10 @@ You have to build a two column view. The left column of the view shows the list 
 
 The right side of the view shows a scrollable calendar. The dates on the calendar corresponding to a `trip` are highlighted with a background color.
 
-## NOTE : This API was provided to me by a third party so it may no longer work at a later stage. So go to the fetchURL.js file inside src folder and edit the URL according to your needs to make the application work. If the URL endpoint provides data in the specified format then application will work fine.
+## NOTE : This API was provided to me by a third party so it may no longer work at a later point in time. Therefore go to fetchURL.js file inside src folder and edit the URL being exported from this file according to your needs to make the application work. If the URL endpoint provides data in the specified format then application will work fine.
 
 ## The API should return this kind of data:
-- click on the image for a better view if it's not readable
+- click on the image for a better view if it's not readable <br /> <br /> 
 ![API response](https://github.com/yassh-pandey/detangled-challenge/blob/master/detangledAPI.png)
 
 # A sample of how the UI looks:
