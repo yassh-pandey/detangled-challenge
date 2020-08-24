@@ -195,6 +195,12 @@
     background-color: white;
     user-select: none;
 }
+.TripCard__discardChanges:hover{
+    background-color: rgba(60,64,67,0.04);
+}
+.TripCard__saveChanges:hover{
+    background-color: rgba(60,64,67,0.04);
+}
 .TripCard__delete{
     position: absolute;
     top: 0.5rem;
