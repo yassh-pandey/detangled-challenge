@@ -42,6 +42,11 @@ function TripCard(props) {
     };
     const proceedDeleteOperation = (e)=>{
         e.preventDefault();
+        const options = {
+            method: "DELETE",
+            mode: 'cors',
+        };
+        fetch(`${URL}/${cardId}`, options);
     };
     const handleTripDestinationChange = (e)=>{
         const target = e.currentTarget;
