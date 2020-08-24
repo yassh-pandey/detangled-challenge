@@ -89,12 +89,10 @@ function TripCard(props) {
             mode: 'cors',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
-            }
+            },
+            body: JSON.stringify(requestBody) 
         };
-        fetch(`${URL}/${cardId}`, options)
-        .then(res=>res.json())
-        .then(r=>console.log(r))
-        .catch(err=>console.log(err));
+        fetch(`${URL}/${cardId}`, options);
         setEditMode(false);
     }
     useEffect(()=>{
