@@ -4,7 +4,7 @@ We have a backend with a single API call which returns a list of events. You can
 http://detangled.in/develop/714269dc-31e5-4684-9fcb-d9863685e6ff/events
 
 This is a testing URL you can use for your test project development. You would
-be doing CRUD operations against this URL. N.B. I am using a new production deployment setup so there's a chance that the service fails or that you have data loss. If either thing happens, just email me and I'll reset all your data and restart the service.
+be doing CRUD operations against this URL.
 
 The URL returns a list of `event` items. Each item has the following fields.
 id: number
