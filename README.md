@@ -1,3 +1,33 @@
+## Requirements Specified
+We have a backend with a single API call which returns a list of events. You can see and consume data at
+
+http://detangled.in/develop/714269dc-31e5-4684-9fcb-d9863685e6ff/events
+
+This is a testing URL you can use for your test project development. You would
+be doing CRUD operations against this URL. N.B. I am using a new production deployment setup so there's a chance that the service fails or that you have data loss. If either thing happens, just email me and I'll reset all your data and restart the service.
+
+The URL returns a list of `event` items. Each item has the following fields.
+id: number
+destination: string
+start: datetime
+duration: number
+comments: string
+
+Standard REST phrasing is possible. For example making a DELETE call against http://detangled.in/develop/714269dc-31e5-4684-9fcb-d9863685e6ff/events/:id would result in the server deleting this data.
+
+You have to build a two column view. The left column of the view shows the list of `trip` objects as cards. The card title is the `destination` string and contents of the card are the start date, duration and comments. Only the destination and comments are editable in the card. Edits made to the items are persisted to the backend by making PUT calls against the URL with the relevant ID suffixed. The card should be deletable (trash-can icon for example) and should correspondingly delete the trip from the backend using the URL as described above.
+
+The right side of the view shows a scrollable calendar. The dates on the calendar corresponding to a `trip` are highlighted with a background color.
+
+## NOTE : This API was provided to me by a third party so it may no longer work at a later stage. So go to the fetchURL.js file inside src folder and edit the URL according to your needs to make the application work. If the URL endpoint provides data in the specified format then application will work fine.
+
+## The API should return this kind of data:
+- click on the image for a better view if it's not readable
+![API response](https://github.com/yassh-pandey/detangled-challenge/blob/master/detangledAPI.png)
+
+# A sample of how the UI looks:
+![UI gif](https://github.com/yassh-pandey/detangled-challenge/blob/master/WebAppGif.gif)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
