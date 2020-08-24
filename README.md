@@ -25,6 +25,10 @@ The right side of the view shows a scrollable calendar. The dates on the calenda
 - click on the image for a better view if it's not readable <br /> <br /> 
 ![API response](https://github.com/yassh-pandey/detangled-challenge/blob/master/detangledAPI.png)
 
+<a/>
+<br />
+<br />
+
 # The webapp is not responsive so for desired behaviour / experience please run it on a desktop / laptop browser.
 
 # A sample of how the UI looks:
