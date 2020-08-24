@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+.TripCard__wrapper{
+    margin: 12rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.TileCard__displayConfirmationBox{
+    width: 600px;
+    height: 350px;
+    background-color: #fefefe;
+    padding: 2rem;
+    box-shadow: 0px 0px 20px -6px rgba(1,1,1,0.4);
+    background:linear-gradient(135deg, #f8f8f8 0%,#efefef 100%);
+    transition: all ease-in-out 300ms;
+}
+.TileCard__displayConfirmationBox hr{
+    color: #d5d5d5;
+    margin: 1rem 0rem;
+}
+.TileCard__displayConfirmationBox__title{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+.TileCard__displayConfirmationBox__message{
+    padding: 0.8rem 0.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+.TileCard__displayConfirmationBox__subMessage{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.5rem;
+    color: #283842;
+}
+.TileCard__displayConfirmationBox__actionButtonsWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+.confirmDeleteButton{
+    background-color: #007bff;
+    color: white;
+    padding: 0.7rem 1rem;
+    border-radius: 4px;
+    position: relative;
+    left: -3rem;
+    user-select: none;
+    cursor: pointer;
+}
+.cancelOperationButton{
+    background-color: #dc3545;
+    color: white;
+    padding: 0.7rem 1rem;
+    border-radius: 4px;
+    user-select: none;
+    cursor: pointer;
+}
+.TripCard__container{
+    border-radius: 5px;
+    width: 600px;
+    height: 350px;
+    background:linear-gradient(135deg, #f8f8fc 0%,#f0f0f8 100%);
+    box-shadow: 0px 0px 10px -4px rgba(1,1,1,0.3);
+    padding: 2rem;
+    position: relative;
+    transition: all ease-in-out 200ms;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    -webkit-font-smoothing: antialised;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: subpixel-antialiased;
+    transform-style: preserve-3d;
+    will-change: contents;
+    z-index: 5;
+}
+.TripCard__destination{
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    padding: 0.4rem 4rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    align-self: center;
+    box-sizing: content-box;
+    border: 2px dashed #c7c7c7;
+}
+.TripCard__destination:hover{
+    background-color: rgba(60,64,67,0.08);
+}
+.Edit__TripCard__destination{
+    align-self: center;
+    margin: 0rem auto;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.Edit__TripCard__destination input{
+    text-align: center;
+    border: none;
+    background-color: #fefefe;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    padding: 0.4rem 4rem;
+    border: 2px dashed #007bff;
+    width: 100%;
+    outline: none;
+}
+.Edit__TripCard__comment{
+    align-self: center;
+    margin: 0rem auto;
+    width: 100%;
+    display: flex;
+}
+.Edit__TripCard__comment input{
+    flex-grow: 1;
+    text-align: left;
+    border: none;
+    background-color: #fefefe;
+    padding: 0.4rem 2rem;
+    border: thin dashed #007bff;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+.TripCard__startDate{
+    margin: 1rem 0px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+}
+.TripCard__duration{
+    margin: 1rem 0rem;
+    font-family: 'Roboto', sans-serif;
+}
+.TripCard__comment{
+    margin: 1rem 0rem;
+    margin-bottom: 0rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: content-box;
+    /* padding: 1rem; */
+}
+.TripCard__comment__valueBox{
+    cursor: pointer;
+}
+.TripCard__comment__valueBox:hover{
+    background-color: rgba(60,64,67,0.08);
+}
+.TripCard__itemHeader{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-right: 1rem;
+}
+.TripCard__changesActionButton{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+.TripCard__saveChanges{
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: thin solid gray;
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+    background-color: white;
+    margin-right: 1rem;
+    user-select: none;
+}
+.TripCard__discardChanges{
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: thin solid gray;
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+    background-color: white;
+    user-select: none;
+}
+.TripCard__delete{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 0.7rem;
+    box-sizing: content-box;
+} 
+.TripCard__delete:hover{
+    background-color: rgba(60,64,67,0.08);
+}
+.activeCardIndicator{
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    left: -2px;
+    border-radius: 10px;
+}
