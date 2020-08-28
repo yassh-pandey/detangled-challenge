@@ -131,6 +131,14 @@ function TripCard(props) {
         }
         const trip_destination = props.destination;
         const trip_comment = props.comment;
+        if(props.scrollToView){
+            if(tripCardWrapperRef.current){
+                tripCardWrapperRef.current.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            }
+        }
         if(trip_destination && trip_comment){
             setEditableContent(
                 {
@@ -142,7 +150,7 @@ function TripCard(props) {
         else{
             return ;
         }
-    },[props.comment, props.destination, props.id, props.io]);
+    },[props.comment, props.destination, props.id, props.io, props.scrollToView]);
 
     return (
         <div className="TripCard__wrapper" ref={tripCardWrapperRef} id={cardId} >

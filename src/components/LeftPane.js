@@ -4,6 +4,7 @@ import URL from '../fetchURL'
 import Loader from './Loader'
 import TripCard from './TripCard'
 import moment from 'moment';
+import referenceDate from "../referenceDate"
 const itemsPerLazyLoad = 10;
 const reducer = (state, action)=>{
     let newData = [];
@@ -43,12 +44,14 @@ function LeftPane(props) {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [idOfItemInViewPort, setIdOfItemInViewPort] = useState(null);
     const [loadMore, setLoadMore] = useState(false);
+    const [scrollToViewId, setScrollToViewId] = useState(null);
     const loadMoreObserver = useRef(
         new IntersectionObserver(
             (entries=>{
                 const loadMoreElement = entries[0];
                 if (loadMoreElement.isIntersecting){
-                    if(state.startIndex>state.allData.length){
+                    if(state.startIndex>=state.allData.length){
+                        setLoadMore(false);
                         return;
                     }
                     setLoadMore(true);
@@ -101,11 +104,33 @@ function LeftPane(props) {
         fetch(URL)
         .then(response=>response.json())
         .then(result=>{
+            const dateCompareFunction = (first, second)=>{
+                return moment(first.start) - moment(second.start);
+            };
+            result.sort(dateCompareFunction);
+            const nextDatesAfterReference = [];
+            for(let i = 0 ; i < result.length ; i++){
+                const item = result[i];
+                const startDate = moment(item.start);
+                const endDate = moment(item.start).add(item.duration, "days");
+                if(startDate.isSameOrAfter(referenceDate)){
+                    nextDatesAfterReference.push(item);
+                }
+                if( referenceDate.isSameOrAfter(startDate) && referenceDate.isSameOrBefore(endDate) ){
+                    setScrollToViewId(item.id.toString()); 
+                    break;
+                }
+            }
+            
+            if(nextDatesAfterReference.length !== 0){
+                setScrollToViewId(nextDatesAfterReference[0].id.toString());
+            }
+            
             dispatch({type: "INIT_STATE", payload: {
                     allData: [...result],
                     isLoaded: true,
-                    data: [...result.slice(0, itemsPerLazyLoad)],
-                    startIndex: itemsPerLazyLoad
+                    data: [...result],
+                    startIndex: result.length
                 }
             })
         })
@@ -139,8 +164,16 @@ function LeftPane(props) {
                     
                     state.data.map(
                         (trip, index)=>(
+                            scrollToViewId !== null && scrollToViewId === trip.id.toString()
+                            ?
                             <TripCard 
                             idOfItemInViewPort={idOfItemInViewPort}
+                            scrollToView={true}
+                            io={observer} {...trip} key={trip.id} globalTripState={state} globalTripDispatch={dispatch}/>
+                            :
+                            <TripCard 
+                            idOfItemInViewPort={idOfItemInViewPort}
+                            scrollToView = {false}
                             io={observer} {...trip} key={trip.id} globalTripState={state} globalTripDispatch={dispatch}/>
                         )
                     )
